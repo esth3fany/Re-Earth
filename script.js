@@ -360,12 +360,19 @@ import * as THREE from 'three';
                 const button = document.createElement('div');
                 button.draggable = true;
                 button.dataset.moduleName = name;
-                button.className = 'module-button flex flex-col items-center justify-center p-2 bg-gray-700 rounded-lg text-xs font-medium text-gray-200 transition-all duration-200 transform hover:scale-105 hover:shadow-lg border-2 border-transparent cursor-grab';
+                button.className = 'module-button flex flex-col items-center justify-center p-3 bg-gradient-to-br from-white to-gray-100 rounded-2xl text-xs font-bold text-gray-800 transition-all duration-200 transform hover:scale-110 hover:shadow-2xl border-4 cursor-grab shadow-lg';
                 const hexColor = `#${new THREE.Color(config.color).getHexString()}`;
                 button.style.setProperty('--module-color', hexColor);
-                button.onmouseenter = () => button.style.borderColor = button.style.getPropertyValue('--module-color');
-                button.onmouseleave = () => button.style.borderColor = 'transparent';
-                button.innerHTML = `${MODULE_ICONS[config.icon] || MODULE_ICONS['default']}<span>${name}</span>`;
+                button.style.borderColor = hexColor;
+                button.onmouseenter = () => {
+                    button.style.backgroundColor = hexColor;
+                    button.style.color = 'white';
+                };
+                button.onmouseleave = () => {
+                    button.style.backgroundColor = '';
+                    button.style.color = '';
+                };
+                button.innerHTML = `${MODULE_ICONS[config.icon] || MODULE_ICONS['default']}<span class="mt-1">${name}</span>`;
                 button.addEventListener('dragstart', (event) => {
                     event.dataTransfer.setData("text/plain", name);
                     event.dataTransfer.effectAllowed = "copy";
@@ -511,8 +518,8 @@ import * as THREE from 'three';
             CHECKLIST_ITEMS.forEach(name => {
                 const li = document.createElement('li');
                 li.id = `checklist-${name.replace(/\s+/g, '-')}`;
-                li.innerHTML = `<span class="mr-2">&#10008;</span> ${name}`;
-                li.className = 'text-red-400';
+                li.innerHTML = `<span class="mr-2 text-xl">❌</span> ${name}`;
+                li.className = 'text-red-600 font-semibold bg-red-100 p-2 rounded-lg';
                 checklistListEl.appendChild(li);
             });
         }
@@ -521,8 +528,13 @@ import * as THREE from 'three';
             const check = (name, condition) => {
                 const li = document.getElementById(`checklist-${name.replace(/\s+/g, '-')}`);
                 if (li) {
-                    li.className = condition ? 'text-green-400' : 'text-red-400';
-                    li.querySelector('span').innerHTML = condition ? '&#10004;' : '&#10008;';
+                    if (condition) {
+                        li.className = 'text-green-700 font-semibold bg-green-100 p-2 rounded-lg';
+                        li.querySelector('span').innerHTML = '✅';
+                    } else {
+                        li.className = 'text-red-600 font-semibold bg-red-100 p-2 rounded-lg';
+                        li.querySelector('span').innerHTML = '❌';
+                    }
                 }
             };
             check(CHECKLIST_ITEMS[0], balances.energyBalance >= 0);
@@ -532,8 +544,8 @@ import * as THREE from 'three';
 
         function updateAlertsUI(alerts) {
             alertsListEl.innerHTML = alerts.size === 0 
-                ? '<li class="text-gray-500">Nenhum alerta no momento.</li>'
-                : [...alerts].map(alert => `<li class="text-yellow-400">${alert}</li>`).join('');
+                ? '<li class="text-green-600 font-semibold bg-green-100 p-2 rounded-lg">✓ Nenhum alerta no momento!</li>'
+                : [...alerts].map(alert => `<li class="text-orange-700 font-semibold bg-orange-100 p-2 rounded-lg my-1">⚠️ ${alert}</li>`).join('');
         }
         
         function updateSelectedModuleInfo(module) {
