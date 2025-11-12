@@ -10,7 +10,7 @@ import * as THREE from 'three';
                     color: 0xbe123c, 
                     icon: 'home',
                     // URL do modelo 3D
-                    modelUrl: 'modelos/forest_house.glb', // ATUALIZADO
+                    modelUrl: 'Re-Earth/modelos/forest_house.glb', // ATUALIZADO
                     modelScale: 1.5, // Escala para ajustar o modelo
                     area: 50,
                     energyConsumption: 5, // kWh/dia por morador
