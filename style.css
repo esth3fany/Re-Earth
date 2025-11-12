@@ -1,101 +1,95 @@
 body {
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
-        }
-        .slider-thumb::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(to bottom, #fbbf24, #f59e0b);
-            cursor: pointer;
-            border-radius: 50%;
-            border: 3px solid #92400e;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        .slider-thumb::-moz-range-thumb {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(to bottom, #fbbf24, #f59e0b);
-            cursor: pointer;
-            border-radius: 50%;
-            border: 3px solid #92400e;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top: 4px solid #2dd4bf; 
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        @keyframes float-delayed {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-bounce-slow {
-            animation: bounce-slow 3s ease-in-out infinite;
-        }
-        .animate-fade-in {
-            animation: fade-in 1s ease-out;
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        .animate-float-delayed {
-            animation: float-delayed 8s ease-in-out infinite;
-            animation-delay: 1s;
-        }
-        .menu-btn {
-            position: relative;
-            overflow: hidden;
-        }
-        .menu-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        .menu-btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        .module-button:active {
-            cursor: grabbing;
-        }
-        .progress-bar-container {
-            background: linear-gradient(to right, #e5e7eb, #d1d5db);
-            border-radius: 9999px;
-            height: 1.25rem;
-            overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-        }
-        .progress-bar-fill {
-            height: 100%;
-            border-radius: 9999px;
-            transition: width 0.5s ease-in-out;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    /* Os estilos de cor/fundo agora são controlados pelo HTML */
+ }
+ 
+ /* Estilos dos Sliders (para menu de opções E painel principal) */
+ .slider-thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #f97316; /* Laranja para combinar com o novo tema */
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid #c2410c;
+ }
+ .slider-thumb::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #f97316;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid #c2410c;
+ }
+
+ /* Botão de arrastar o Módulo */
+ .module-button:active {
+    cursor: grabbing;
+ }
+
+ /* Barras de Progresso (Dashboard) */
+ .progress-bar-container {
+    background-color: #e5e7eb; /* Fundo mais claro */
+    border-radius: 9999px;
+    height: 1.25rem; /* Um pouco mais alto */
+    overflow: hidden;
+    padding: 2px; /* Espaçamento para a borda */
+ }
+ .progress-bar-fill {
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 0.5s ease-in-out;
+ }
+
+ /* Spinner para a tela de carregamento principal */
+ .spinner {
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 5px solid #16a34a; /* Verde para combinar */
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+ }
+
+ /* --- Animações do Menu Principal --- */
+ @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+ }
+
+ @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+ }
+
+ .animate-float {
+    animation: float 3s ease-in-out infinite;
+ }
+ .animate-float-delayed {
+    animation: float 4s ease-in-out infinite;
+ }
+
+ @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+ }
+ .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+ }
+
+ @keyframes bounce-slow {
+    0%, 100% {
+        transform: translateY(-5%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        transform: translateY(5%);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+ }
+ .animate-bounce-slow {
+    animation: bounce-slow 2s infinite;
+ }

@@ -158,13 +158,15 @@
         </div>
     </div>
 
+    <!-- Tela de Carregamento Principal -->
     <div id="loading-overlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-gradient-to-b from-sky-400 via-green-300 to-green-500 flex-col gap-6">
         <div class="text-6xl animate-bounce">🌍</div>
-        <div class="spinner border-green-600"></div>
+        <div class="spinner"></div> <!-- Spinner usará a classe .spinner do style.css -->
         <p class="text-2xl font-bold text-white drop-shadow-lg">Carregando sua Ecovila...</p>
         <p class="text-lg text-green-100">🌱 Preparando o terreno sustentável 🌱</p>
     </div>
 
+    <!-- Conteúdo Principal do Aplicativo (Inicialmente Oculto) -->
     <div id="app-container" class="flex h-screen w-screen hidden transition-opacity duration-500 bg-gradient-to-b from-sky-200 to-green-200">
         
         <!-- Painel de Controle Esquerdo -->
@@ -218,6 +220,8 @@
 
         <!-- Canvas 3D Central -->
         <div id="canvas-container" class="flex-grow h-full relative">
+            
+
             <div class="absolute top-2 left-2 bg-white bg-opacity-95 p-3 rounded-2xl text-xs z-10 shadow-xl border-3 border-blue-400">
                 <p class="font-bold text-blue-700">🎮 Controles: <span class="font-normal text-green-700">Clique Esquerdo + Arrastar = Girar | Clique Direito = Mover | Scroll = Zoom</span></p>
                 <p class="font-bold text-blue-700">⌨️ Teclas: <span class="font-normal text-green-700">W: Mover | S: Escalar | E: Rotacionar | Q/Del: Deletar | ESC: Desselecionar</span></p>
