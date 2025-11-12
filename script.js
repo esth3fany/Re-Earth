@@ -10,8 +10,8 @@ import * as THREE from 'three';
                     color: 0xbe123c, 
                     icon: 'home',
                     // URL do modelo 3D
-                    modelUrl: 'Re-Earth/modelos/forest_house.glb', // ATUALIZADO
-                    modelScale: 1.5, // Escala para ajustar o modelo
+                    modelUrl: 'modelos/le_tonneau_tavern.glb', // ATUALIZADO
+                    modelScale: 0.02, // Escala para ajustar o modelo
                     area: 50,
                     energyConsumption: 5, // kWh/dia por morador
                     waterConsumption: 150, // L/dia por morador
