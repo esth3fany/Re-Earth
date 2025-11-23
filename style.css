@@ -1,95 +1,213 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Inter', sans-serif;
-    overflow: hidden;
-    /* Os estilos de cor/fundo agora são controlados pelo HTML */
- }
- 
- /* Estilos dos Sliders (para menu de opções E painel principal) */
- .slider-thumb::-webkit-slider-thumb {
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+/* Estilos dos Sliders */
+.slider-thumb::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
-    background: #f97316; /* Laranja para combinar com o novo tema */
-    cursor: pointer;
-    border-radius: 50%;
-    border: 3px solid #c2410c;
- }
- .slider-thumb::-moz-range-thumb {
     width: 20px;
     height: 20px;
     background: #f97316;
     cursor: pointer;
     border-radius: 50%;
     border: 3px solid #c2410c;
- }
+}
+.slider-thumb::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #f97316;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid #c2410c;
+}
 
- /* Botão de arrastar o Módulo */
- .module-button:active {
+/* Botão de arrastar o Módulo */
+.module-button:active {
     cursor: grabbing;
- }
+}
 
- /* Barras de Progresso (Dashboard) */
- .progress-bar-container {
-    background-color: #e5e7eb; /* Fundo mais claro */
+/* Barras de Progresso */
+.progress-bar-container {
+    background-color: #e5e7eb;
     border-radius: 9999px;
-    height: 1.25rem; /* Um pouco mais alto */
+    height: 1.25rem;
     overflow: hidden;
-    padding: 2px; /* Espaçamento para a borda */
- }
- .progress-bar-fill {
+    padding: 2px;
+}
+.progress-bar-fill {
     height: 100%;
     border-radius: 9999px;
     transition: width 0.5s ease-in-out;
- }
+}
 
- /* Spinner para a tela de carregamento principal */
- .spinner {
+/* Spinner */
+.spinner {
     border: 5px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    border-top: 5px solid #16a34a; /* Verde para combinar */
+    border-top: 5px solid #16a34a;
     width: 60px;
     height: 60px;
     animation: spin 1s linear infinite;
- }
+}
 
- /* --- Animações do Menu Principal --- */
- @keyframes spin {
+/* --- ANIMAÇÕES GERAIS --- */
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
- }
+}
 
- @keyframes float {
+@keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-15px); }
     100% { transform: translateY(0px); }
- }
+}
 
- .animate-float {
-    animation: float 3s ease-in-out infinite;
- }
- .animate-float-delayed {
-    animation: float 4s ease-in-out infinite;
- }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-float-delayed { animation: float 4s ease-in-out infinite; }
 
- @keyframes fade-in {
+@keyframes fade-in {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
- }
- .animate-fade-in {
-    animation: fade-in 1s ease-out forwards;
- }
+}
+.animate-fade-in { animation: fade-in 1s ease-out forwards; }
 
- @keyframes bounce-slow {
-    0%, 100% {
-        transform: translateY(-5%);
-        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-    }
-    50% {
-        transform: translateY(5%);
-        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    }
- }
- .animate-bounce-slow {
-    animation: bounce-slow 2s infinite;
- }
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(-5%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+    50% { transform: translateY(5%); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+}
+.animate-bounce-slow { animation: bounce-slow 2s infinite; }
+
+/* Girar Turbina Lenta */
+.animate-spin-slow { animation: spin 8s linear infinite; }
+.animate-spin-reverse-slow { animation: spin 10s linear infinite reverse; }
+
+/* Partículas Flutuantes */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.6;
+    animation: float-particle linear infinite;
+}
+@keyframes float-particle {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+}
+
+/* Entrada suave de baixo para cima */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+
+/* Pop-in do Modal */
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.animate-pop-in { animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+/* Parallax Suave */
+@keyframes floatX {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+}
+@keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+.animate-float-very-slow { animation: floatX 20s ease-in-out infinite; }
+.animate-float-slow { animation: floatX 15s ease-in-out infinite reverse; }
+.animate-float-medium { animation: floatX 10s ease-in-out infinite; }
+.animate-float-fast { animation: floatY 5s ease-in-out infinite; }
+
+/* Vagalumes */
+.firefly {
+    position: absolute;
+    border-radius: 50%;
+    background: #fde047;
+    box-shadow: 0 0 10px 2px rgba(253, 224, 71, 0.6);
+    opacity: 0;
+    animation: float-firefly ease-in-out infinite alternate;
+}
+.f1 { width: 4px; height: 4px; top: 40%; left: 20%; animation-duration: 6s; }
+.f2 { width: 6px; height: 6px; top: 60%; left: 50%; animation-duration: 8s; animation-delay: 1s; }
+.f3 { width: 3px; height: 3px; top: 70%; left: 80%; animation-duration: 5s; animation-delay: 2s; }
+.f4 { width: 5px; height: 5px; top: 30%; left: 60%; animation-duration: 7s; animation-delay: 0.5s; }
+.f5 { width: 4px; height: 4px; top: 80%; left: 10%; animation-duration: 9s; animation-delay: 3s; }
+
+@keyframes float-firefly {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { transform: translate(30px, -50px) scale(1.2); opacity: 0.4; }
+}
+
+/* Efeitos de Texto */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-down { animation: fadeInDown 1s ease-out forwards; }
+
+/* Vinheta e Ruído */
+.bg-radial-gradient-vignette {
+    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.6) 100%);
+}
+.bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* --- ESTILO DAS SCROLLBARS (Personalizado) --- */
+
+/* Funciona no Chrome, Edge e Safari */
+::-webkit-scrollbar {
+    width: 8px; /* Largura da barra vertical */
+    height: 8px; /* Altura da barra horizontal */
+}
+
+/* O fundo da barra (Trilho) */
+::-webkit-scrollbar-track {
+    background: rgba(17, 24, 39, 0.5); /* gray-900 com transparência */
+    border-radius: 4px;
+}
+
+/* A parte que se move (Polegar) */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #059669, #047857); /* Gradiente Emerald */
+    border-radius: 4px;
+    border: 2px solid rgba(17, 24, 39, 0.8); /* Borda para separar do trilho */
+}
+
+/* Efeito ao passar o mouse na barra */
+::-webkit-scrollbar-thumb:hover {
+    background: #10b981; /* Emerald mais claro */
+}
+
+/* Canto onde as barras horizontal e vertical se encontram */
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Suporte para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #059669 rgba(17, 24, 39, 0.5);
+}
+
+/* Scroll suave para o modal e painéis */
+#credits-modal > div,
+.overflow-y-auto {
+    scroll-behavior: smooth;
+}
